@@ -10,6 +10,7 @@ import rateLimit from "express-rate-limit";
 import compression from "compression";
 
 import errorHandler from "./middleware/errorHandler.js";
+import indexRouter from "./routes/index.routes.js";
 
 dotenv.config();
 
@@ -35,7 +36,7 @@ app.use(express.json());
 
 app.use(compression({ threshold: 1024 }))
 
-app.use('/api', sensorRouter);
+app.use('/api', indexRouter);
 
 app.use(errorHandler)
 
