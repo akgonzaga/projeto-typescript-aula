@@ -3,3 +3,5 @@
 /logs
 /dockerfile
 /dist
+/docker-compose.yml
+/.dockerignore
