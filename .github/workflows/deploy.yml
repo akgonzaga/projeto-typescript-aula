@@ -11,7 +11,9 @@ jobs:
 
     steps:
       - name: Checkout do código
-        uses: actions/Checkout@v4
+        # the action name is lowercase (`actions/checkout`) – GitHub normalises most of the
+        # path but it's good to keep the documented spelling to avoid confusion.
+        uses: actions/checkout@v4
 
       # - name: Restart Docker
       #   run: |
@@ -27,8 +29,9 @@ jobs:
 
       - name: Build da Imagem
         run: |
-              docker build -t ghcr.io/akgonzaga/
-              turma01:lates
+          # the original lines split the tag into two lines and misspelled "latest";
+          # also you need to specify a build context (here we assume the repository root).
+          docker build -t ghcr.io/akgonzaga/turma01:latest .
 
       - name: Push Imagem
         run: |
