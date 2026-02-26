@@ -47,3 +47,12 @@ jobs:
           JWT_ACCESS_SECRET=${{ secrets.JWT_ACCESS_SECRET }}
           JWT_REFRESH_SECRET=${{ secrets.JWT_REFRESH_SECRET }}
           EOF
+
+    - name: Subir docker
+      run: |
+            docker compose up -d --build
+
+    - name: Verificar se Subiu
+      run: |
+            sleep 10
+            docker compose ps
