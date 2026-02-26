@@ -22,7 +22,11 @@ jobs:
 
       - name: Login no Github Container Registry
         run: |
-              echo "${{ secrets.GHCR_TOKEN }}" | docker Login ghcr.io -u ${{github.actor}} --password-stdin
+              # some Docker builds (or older client versions) don't recognise the shorthand
+              # `-u` flag on `docker login`. use the long option to be safe and keep the
+              # command lowercase (`login` instead of `Login`).
+              echo "${{ secrets.GHCR_TOKEN }}" | \
+                docker login ghcr.io --username ${{ github.actor }} --password-stdin
       - name: Remover Container Antigo
         run:  |
               docker compose down || true
