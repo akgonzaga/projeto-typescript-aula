@@ -1,7 +1,9 @@
 /.env
 /node_modules
 /logs
-/Dockerfile
+# Dockerfile should be tracked so the CI pipeline can build the image.
+# the line below was intentionally ignoring it but we need the file in the repo.
+#/Dockerfile
 /dist
 /docker-compose.yaml
 /.dockerignore
